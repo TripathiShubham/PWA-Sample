@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <title>Service worker app</title>
+    <meta name="theme-color" content="#4286f4">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+</head>
+
+<script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+    angular.module('demo', ['ngMaterial'])
+        .controller('AppCtrl', function ($scope, $timeout, $mdSidenav) {
+            $scope.toggleLeft = buildToggler('left');
+            $scope.toggleRight = buildToggler('right');
+
+            function buildToggler(componentId) {
+                return function () {
+                    $mdSidenav(componentId).toggle();
+                };
+            }
+        });
+
+</script>
+
+<body ng-app="demo">
+
+    <div ng-controller="AppCtrl" layout="column" style="height: 500px;" ng-cloak>
+
+        <section layout="row" flex>
+
+            <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+
+                <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">App Menu</h1>
+                </md-toolbar>
+
+                <md-content layout-margin>
+                    <md-list flex>
+                        <md-list-item ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h4>Home</h4>
+                            </div>
+                        </md-list-item>
+                        <md-list-item ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h4>About</h4>
+                            </div>
+                        </md-list-item>
+                        <md-list-item ng-click="null">
+                            <div class="md-list-item-text" layout="column">
+                                <h4>Exit</h4>
+                            </div>
+                        </md-list-item>
+                </md-content>
+
+            </md-sidenav>
+
+            <md-content flex>
+
+                <md-toolbar class="md-hue-2">
+                    <div ng-click="toggleLeft()" class="md-toolbar-tools">
+                        <i class="material-icons">menu</i>
+                    </div>
+                </md-toolbar>
+
+                <md-card  style='margin:22px !important' >
+                    <img src="./img.jpg" class="md-card-image" alt="Washed Out">
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-icon-button" aria-label="Favorite">
+                            <i class="material-icons" style='color:red !important'>favorite</i>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Settings">
+                            <i class="material-icons">menu</i>
+                        </md-button>
+                        <md-button class="md-icon-button" aria-label="Share">
+                            <i class="material-icons">share</i>
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
+
+            </md-content>
+
+        </section>
+
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./test.js"></script>
+
+</html>
